@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
+import LoginWalletModal from "../Login-wallet";
 import CreateWalletModal from "../Create-wallet";
 import { motion, AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -14,6 +17,13 @@ const Header = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openLoginModal = () => {
+    setIsLoginModalOpen(true);
+  };
+  const closeLoginModal = () => {
+    setIsLoginModalOpen(true);
   };
 
   const handleSubmit = async (data) => {
@@ -78,15 +88,54 @@ const Header = () => {
     }
   };
 
+  // Function to navigate to AboutUs.js page
+  const navigateToAboutUs = () => {
+    router.push("/AboutUs");
+  };
+
   return (
     <header className="w-full py-6 lg:py-4 relative border-b">
       <div className="container mx-auto px-8 lg:px-4 flex items-center justify-between">
-        <div className="flex items-center">
-          <h1 className="text-xl font-bold">Maschain Demo</h1>
+        <div className="flex items-left">
+          <i src="Hackathonicon.ico"></i>
+          <h1 className="text-xl font-bold">Maschain Binary Pirate</h1>
         </div>
+
+        <Link href="/" passHref>
+        <button
+          className="flex item-right border:none rounded-md py-2 px-4 hover:text-grey transition-all duration-500 hover:opacity-30"
+        >
+          Home Page
+        </button>
+        </Link>
+
+        <Link href="/bhptoken" passHref>
+        <button
+          className="flex item-right border:none rounded-md py-2 px-4 hover:text-grey transition-all duration-500 hover:opacity-30"
+        >
+          BHP Token
+        </button>
+        </Link>
+
+        <Link href="/about" passHref>
+        <button
+          className="flex item-right border:none rounded-md py-2 px-4 hover:text-grey transition-all duration-500 hover:opacity-30"
+        >
+          About Us
+        </button>
+        </Link>
+
+        <Link href="/contact" passHref>
+        <button
+          className="flex item-right border:none rounded-md py-2 px-4 hover:text-grey transition-all duration-500 hover:opacity-30"
+        >
+          Contact Us
+        </button>
+        </Link>
+        
         <button
           onClick={openModal}
-          className="border rounded-md py-2 px-4 hover:bg-black hover:text-white transition-all duration-300"
+          className="flex item-right border rounded-md py-2 px-4 hover:bg-black hover:text-white transition-all duration-300"
         >
           {typeof window !== "undefined" &&
           window.sessionStorage.getItem("walletAddress") ? (
@@ -101,6 +150,23 @@ const Header = () => {
             "Create Wallet"
           )}
         </button>
+        {/* <button
+          onClick={openLoginModal}
+          className="flex item-right border rounded-md py-2 px-4 hover:bg-black hover:text-white transition-all duration-300"
+        >
+          {typeof window !== "undefined" &&
+          window.sessionStorage.getItem("walletAddress") ? (
+            <span className="text-sm">
+              {`${window.sessionStorage
+                .getItem("walletAddress")
+                .slice(0, 6)}...${window.sessionStorage
+                .getItem("walletAddress")
+                .slice(-4)}`}
+            </span>
+          ) : (
+            "Login Wallet"
+          )}
+        </button> */}
       </div>
       <AnimatePresence>
         {isModalOpen && (
@@ -114,6 +180,18 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* <AnimatePresence>
+        {isLoginModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
+          >
+            <LoginWalletModal onSubmit={handleSubmit} onClose={closeLoginModal} />
+          </motion.div>
+        )}
+      </AnimatePresence> */}
       <ToastContainer
         position="bottom-center"
         autoClose={5000}

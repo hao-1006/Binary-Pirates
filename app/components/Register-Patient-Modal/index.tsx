@@ -1,22 +1,37 @@
 "use client";
 import React, { useState } from "react";
 
-const TransferTokenModal = ({ onSubmit, onClose }) => {
+// Button style object
+const buttonStyle = {
+  width: '80px',
+  height: '50px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+  marginRight: '10px',
+  marginBottom: '10px',
+  cursor: 'pointer',
+  backgroundColor: '#f0f0f0',
+};
+
+const RegisterPatientModal = ({ onSubmit, onClose }) => {
   const [walletAddress, setWalletAddress] = useState("");
-  const [to, setTo] = useState("");
-  const [amount, setAmount] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
   const contractAddress = "0xefe721602E7f4c6468eA8C003D405f999490091b";
-  const fallbackUrl = "https://maschainworkshop.vercel.app/";
+  const fallbackUrl = "https://postman-echo.com/post?";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ walletAddress, to, amount, contractAddress, fallbackUrl });
+    onSubmit({ walletAddress, name, age, contractAddress, fallbackUrl });
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center backdrop-blur-md">
       <div className="bg-white p-8 rounded-lg shadow-lg lg:w-96 w-3/4">
-        <h2 className="text-2xl font-bold mb-8">Transfer Token</h2>
+        <h2 className="text-2xl font-bold mb-8">Mint Token</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="walletAddress" className="block mb-2">
@@ -31,28 +46,44 @@ const TransferTokenModal = ({ onSubmit, onClose }) => {
               required
             />
           </div>
+
           <div className="mb-4">
-            <label htmlFor="to" className="block mb-2">
-              Recipient Address
+            <label htmlFor="name" className="block mb-2">
+              Name
             </label>
             <input
-              type="email"
-              id="to"
-              value={to}
-              onChange={(e) => setTo(e.target.value)}
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
               required
             />
           </div>
+
+          
+
           <div className="mb-4">
-            <label htmlFor="amount" className="block mb-2">
-              Amount
+            <label htmlFor="age" className="block mb-2">
+              Age
             </label>
+            <div className="flex flex-wrap justify-between mb-4">
+            {[5, 10, 15, 20, 25, 30].map((value) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => setAge(value.toString())}
+                style={buttonStyle}
+              >
+                {value} Years
+              </button>
+            ))}
+          </div>
             <input
               type="text"
-              id="amount"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              id="age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
               required
             />
@@ -93,7 +124,7 @@ const TransferTokenModal = ({ onSubmit, onClose }) => {
               type="submit"
               className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
             >
-              Transfer
+              Register
             </button>
           </div>
         </form>
@@ -102,4 +133,4 @@ const TransferTokenModal = ({ onSubmit, onClose }) => {
   );
 };
 
-export default TransferTokenModal;
+export default RegisterPatientModal;
