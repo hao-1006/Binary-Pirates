@@ -33,9 +33,3 @@ Navigate to https://portal-testnet.maschain.com/ to get the necessary keys.
 
 In the .env.example file, replace the values with your own key, and rename the file to just ".env" or ".env.local"
 
-# Have fun building
-
-```bash
-Contact me or the team if you have any questions
-@OxBenjamintan - AKA LengzaiBen
-```

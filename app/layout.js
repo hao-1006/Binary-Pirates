@@ -5,8 +5,8 @@ import Header from "./components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Maschain Workshop Template",
-  description: "Template by LengzaiBen",
+  title: "Maschain Workshop Binary Pirates",
+  description: "Create by Binary Pirates team",
 };
 
 export default function RootLayout({ children }) {

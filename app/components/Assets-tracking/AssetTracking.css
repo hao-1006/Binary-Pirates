@@ -1,0 +1,63 @@
+.asset-tracking-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .add-asset-section, .asset-list-section, .asset-details-section {
+    margin-bottom: 20px;
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  input {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btn2 {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn2:hover {
+    background-color: #0056b3;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  
+  li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .asset-details-section p {
+    margin: 5px 0;
+  }
+  
+  .tracking-sections {
+    margin-bottom: 20px;
+  }
+  
+  .tracking-sections > div {
+    margin-bottom: 20px;
+  }

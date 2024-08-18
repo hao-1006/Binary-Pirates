@@ -1,11 +1,26 @@
 "use client";
 import React, { useState } from "react";
 
+// Button style object
+const buttonStyle = {
+  width: '80px',
+  height: '50px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+  marginRight: '10px',
+  marginBottom: '10px',
+  cursor: 'pointer',
+  backgroundColor: '#f0f0f0',
+};
+
 const MintTokenModal = ({ onSubmit, onClose }) => {
   const [walletAddress, setWalletAddress] = useState("");
   const [to, setTo] = useState("");
   const [amount, setAmount] = useState("");
-  const contractAddress = "0xC523A5A3E2A037c9c9fd81fB962db1f87A1ea4A3";
+  const contractAddress = "0xefe721602E7f4c6468eA8C003D405f999490091b";
   const fallbackUrl = "https://postman-echo.com/post?";
 
   const handleSubmit = (e) => {
@@ -44,6 +59,20 @@ const MintTokenModal = ({ onSubmit, onClose }) => {
               required
             />
           </div>
+
+          <div className="flex flex-wrap justify-between mb-4">
+            {[10, 20, 50, 100, 200, 500].map((value) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => setAmount(value.toString())}
+                style={buttonStyle}
+              >
+                {value} BHP
+              </button>
+            ))}
+          </div>
+
           <div className="mb-4">
             <label htmlFor="amount" className="block mb-2">
               Amount
